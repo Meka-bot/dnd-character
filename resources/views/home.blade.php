@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+<form method="POST" action="{{ route('personaje.store') }}">
+{{ csrf_field() }}
+
+<input type="hidden" name="usuario_id" value="{{ Auth::user()->id }}">
+
     <section>
       <div style="background-image: url('https://assets.dicebreaker.com/dungeons-and-dragons-races-guide.jpg/BROK/resize/1200x1200>/format/jpg/quality/70/dungeons-and-dragons-races-guide.jpg'); width:100%;  height: 35vh; padding:0.7%; display: table; margin: 0; background-repeat:no-repeat; background-size:cover; background-attachment: fixed;">
       <div style="text-align: center; margin: 10%; text-shadow: white 0px 0px 10px, white 0px 0px 10px;"><h1>Raza</h1></div>
@@ -9,11 +14,13 @@
 	
     <br>
 
-<div class='container'>
+<div class='container form-group'>
 	<div class="row">
   @foreach ($clases as $clase)
 		<div class="col" style="text-align: center;">
 		@include('utilities._clase_card')
+    <hr>
+    <input type="checkbox" id="" name="clase_id" value="{{ $clase->id }}">
 		</div>
   @endforeach
 	</div>
@@ -29,11 +36,13 @@
 
     <br>
 
-  <div class='container'>
+  <div class='container form-group'>
 	<div class="row">
   @foreach ($razas as $raza)
 		<div class="col" style="text-align: center;">
 		@include('utilities._raza_card')
+    <hr>
+    <input type="checkbox" id="" name="raza_id" value="{{ $raza->id }}">
 		</div>
   @endforeach
 	</div>
@@ -49,14 +58,24 @@
 
     <br>
 
-  <div class='container'>
+  <div class='container form-group'>
 	<div class="row">
   @foreach ($equipamientos as $equipamiento)
 		<div class="col" style="text-align: center;">
 		@include('utilities._equipamiento_card')
+    <hr>
+    <input type="checkbox" id="" name="equipamiento_id" value="{{ $equipamiento->id }}">
 		</div>
   @endforeach
 	</div>
   </div>
 
+  <br>
+  <hr>
+
+  <div style="text-align: center;">
+  <button type="submit" class="btn btn-outline-primary">Crear personaje</button>
+  </div>
+
+  </form>
 @endsection

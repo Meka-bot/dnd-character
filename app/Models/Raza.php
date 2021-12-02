@@ -14,6 +14,6 @@ class Raza extends Model
     
     public function personaje()
     {
-    return $this->belongsTo(Personaje::class);
+    return $this->belongsTo(Personaje::class, 'id', 'name');
     }
 }

@@ -13,14 +13,20 @@ use Illuminate\Http\Request;
 
 class PersonajeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        //
+        $users=User::all();
+
+        $clases=Clase::all();
+
+        $razas=Raza::all();
+
+        $equipamientos=Equipamiento::all();
+
+        $personajes=Personaje::all();
+
+        return view('personaje')->with('users', $users)->with('clases', $clases)->with('razas', $razas)->with('equipamientos', $equipamientos)->with('personajes', $personajes);
     }
 
     /**
@@ -33,15 +39,32 @@ class PersonajeController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-        //
+        $personaje = new Personaje;
+
+        $users=User::all();
+
+        $clases=Clase::all();
+
+        $razas=Raza::all();
+
+        $equipamientos=Equipamiento::all();
+
+        $personajes=Personaje::all();
+        
+        $personaje->usuario_id = $request->usuario_id;
+        $personaje->raza_id = $request->raza_id;
+        $personaje->clase_id = $request->clase_id;
+        $personaje->equipamiento_id = $request->equipamiento_id;
+
+        $personaje->save();
+        $personaje->user()->sync($request->usuario_id);
+
+        return redirect()->back();
+
+       // return view('personaje')->with('users', $users)->with('clases', $clases)->with('razas', $razas)->with('equipamientos', $equipamientos)->with('personajes', $personajes);
     }
 
     /**

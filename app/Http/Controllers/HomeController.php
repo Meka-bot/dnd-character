@@ -6,6 +6,7 @@ use App\Models\Clase;
 use App\Models\Raza;
 use App\Models\Equipamiento;
 use App\Models\User;
+use App\Models\Personaje;
 
 use Illuminate\Http\Request;
 
@@ -36,6 +37,8 @@ class HomeController extends Controller
 
         $equipamientos=Equipamiento::all();
 
-        return view('home')->with('users', $users)->with('clases', $clases)->with('razas', $razas)->with('equipamientos', $equipamientos);
+        $personajes=Personaje::all();
+
+        return view('home')->with('users', $users)->with('clases', $clases)->with('razas', $razas)->with('equipamientos', $equipamientos)->with('personajes', $personajes);
     }
 }
