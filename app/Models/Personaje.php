@@ -37,6 +37,7 @@ class Personaje extends Model
     return $this->hasOne(User::class);
     }
     
+    
 
 
     use HasFactory;

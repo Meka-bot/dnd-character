@@ -45,7 +45,6 @@ class User extends Authenticatable
 
     public function personaje()
     {
-    
     return $this->belongsTo(Personaje::class);
     }
 

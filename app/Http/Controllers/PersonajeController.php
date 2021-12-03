@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Personaje;
-
 use App\Models\Clase;
 use App\Models\Raza;
 use App\Models\Equipamiento;
@@ -13,6 +12,10 @@ use Illuminate\Http\Request;
 
 class PersonajeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     
     public function index()
     {
@@ -24,9 +27,9 @@ class PersonajeController extends Controller
 
         $equipamientos=Equipamiento::all();
 
-        $personajes=Personaje::all();
+        $personajes = Personaje::all();
 
-        return view('personaje')->with('users', $users)->with('clases', $clases)->with('razas', $razas)->with('equipamientos', $equipamientos)->with('personajes', $personajes);
+        return view('personajes.index')->with('users', $users)->with('clases', $clases)->with('razas', $razas)->with('equipamientos', $equipamientos)->with('personajes',  $personajes);
     }
 
     /**
@@ -54,15 +57,16 @@ class PersonajeController extends Controller
 
         $personajes=Personaje::all();
         
+        
         $personaje->usuario_id = $request->usuario_id;
         $personaje->raza_id = $request->raza_id;
         $personaje->clase_id = $request->clase_id;
         $personaje->equipamiento_id = $request->equipamiento_id;
 
         $personaje->save();
-        $personaje->user()->sync($request->usuario_id);
+       
 
-        return redirect()->back();
+        return view('personajes.index')->with('users', $users)->with('clases', $clases)->with('razas', $razas)->with('equipamientos', $equipamientos)->with('personajes', $personajes);
 
        // return view('personaje')->with('users', $users)->with('clases', $clases)->with('razas', $razas)->with('equipamientos', $equipamientos)->with('personajes', $personajes);
     }

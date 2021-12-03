@@ -4,7 +4,10 @@
 <form method="POST" action="{{ route('personaje.store') }}">
 {{ csrf_field() }}
 
+
+<div class="form-group">
 <input type="hidden" name="usuario_id" value="{{ Auth::user()->id }}">
+</div>
 
     <section>
       <div style="background-image: url('https://assets.dicebreaker.com/dungeons-and-dragons-races-guide.jpg/BROK/resize/1200x1200>/format/jpg/quality/70/dungeons-and-dragons-races-guide.jpg'); width:100%;  height: 35vh; padding:0.7%; display: table; margin: 0; background-repeat:no-repeat; background-size:cover; background-attachment: fixed;">
@@ -20,7 +23,7 @@
 		<div class="col" style="text-align: center;">
 		@include('utilities._clase_card')
     <hr>
-    <input type="checkbox" id="" name="clase_id" value="{{ $clase->id }}">
+    <input type="checkbox" id=""  name="clase_id" value="{{ $clase->id }}">
 		</div>
   @endforeach
 	</div>
