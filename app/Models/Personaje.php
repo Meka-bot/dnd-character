@@ -19,26 +19,23 @@ class Personaje extends Model
 
     public function clase()
     {
-    return $this->hasOne(Clase::class);
+    return $this->hasOne(Clase::class, 'id', 'nombre');
     }
 
     public function raza()
     {
-    return $this->hasOne(Raza::class);
+    return $this->hasOne(Raza::class, 'id', 'nombre');
     }
 
     public function equipamiento()
     {
-    return $this->hasOne(Equipamiento::class);
+    return $this->hasOne(Equipamiento::class, 'id', 'nombre');
     }
 
     public function user()
     {
-    return $this->hasOne(User::class);
+    return $this->hasOne(User::class, 'id', 'name');
     }
-    
-    
-
 
     use HasFactory;
 }

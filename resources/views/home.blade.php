@@ -23,7 +23,7 @@
 		<div class="col" style="text-align: center;">
 		@include('utilities._clase_card')
     <hr>
-    <input type="checkbox" id=""  name="clase_id" value="{{ $clase->id }}">
+    <input type="checkbox" id=""  name="clase_id" value="{{ $clase->nombre }}">
 		</div>
   @endforeach
 	</div>
@@ -45,7 +45,7 @@
 		<div class="col" style="text-align: center;">
 		@include('utilities._raza_card')
     <hr>
-    <input type="checkbox" id="" name="raza_id" value="{{ $raza->id }}">
+    <input type="checkbox" id="" name="raza_id" value="{{ $raza->nombre }}">
 		</div>
   @endforeach
 	</div>
@@ -67,7 +67,7 @@
 		<div class="col" style="text-align: center;">
 		@include('utilities._equipamiento_card')
     <hr>
-    <input type="checkbox" id="" name="equipamiento_id" value="{{ $equipamiento->id }}">
+    <input type="checkbox" id="" name="equipamiento_id" value="{{ $equipamiento->nombre }}">
 		</div>
   @endforeach
 	</div>

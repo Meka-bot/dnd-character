@@ -68,7 +68,7 @@ class PersonajeController extends Controller
 
         return view('personajes.index')->with('users', $users)->with('clases', $clases)->with('razas', $razas)->with('equipamientos', $equipamientos)->with('personajes', $personajes);
 
-       // return view('personaje')->with('users', $users)->with('clases', $clases)->with('razas', $razas)->with('equipamientos', $equipamientos)->with('personajes', $personajes);
+      
     }
 
     /**
